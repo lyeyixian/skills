@@ -1,0 +1,8 @@
+# Skills forked from upstream. One per line: <local skill> <upstream repo> <commit> <path in upstream>
+grilling        mattpocock/skills 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76 skills/productivity/grilling
+to-spec         mattpocock/skills 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76 skills/engineering/to-spec
+to-tickets      mattpocock/skills 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76 skills/engineering/to-tickets
+implement       mattpocock/skills 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76 skills/engineering/implement
+tdd             mattpocock/skills 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76 skills/engineering/tdd
+code-review     mattpocock/skills 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76 skills/engineering/code-review
+codebase-design mattpocock/skills 6654f6b60cd9d5be8b54c6fafe44346dabeb3b76 skills/engineering/codebase-design
