@@ -6,7 +6,7 @@ The dotfiles setup clones this repo to `~/.skills` and links every skill into `~
 
 ## Hooks
 
-`hooks/unslop-context.sh` prints the unslop rules. The dotfiles Claude Code settings run it on every session start, so replies follow the rules from the first draft instead of relying on the agent to load the skill. `pstack-study/evals/unslop` has the test that justified this: with the rules loaded, a blind judge preferred the replies 21 of 24 times for both Opus 5.5 and Fable 5.1.
+`hooks/unslop-context.sh` prints the unslop rules. The dotfiles Claude Code settings run it on every session start, so replies follow the rules from the first draft instead of relying on the agent to load the skill. In a test of 96 replies, with the rules loaded a blind judge preferred the replies 21 of 24 times for both Opus 5.5 and Fable 5.1.
 
 ## Forked skills
 
