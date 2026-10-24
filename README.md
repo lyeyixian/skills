@@ -6,7 +6,9 @@ The dotfiles setup clones this repo to `~/.skills` and links every skill into `~
 
 ## Hooks
 
-`hooks/unslop-context.sh` prints the unslop rules. The dotfiles Claude Code settings run it on every session start, so replies follow the rules from the first draft instead of relying on the agent to load the skill. In a test of 96 replies, with the rules loaded a blind judge preferred the replies 21 of 24 times for both Opus 5.5 and Fable 5.1.
+`hooks/writing-context.sh` prints the `writing` skill. The dotfiles Claude Code settings run it on every session start, so replies follow the rules from the first draft instead of relying on the agent to load the skill.
+
+`writing` replaced the older `unslop` skill. It keeps the unslop patterns and adds an ASD-STE100 register for procedures, reference and code comments. In a test of 96 replies, with the unslop rules loaded a blind judge preferred the replies 21 of 24 times for both Opus 5.5 and Fable 5.1. The STE register has no test yet.
 
 ## Forked skills
 
