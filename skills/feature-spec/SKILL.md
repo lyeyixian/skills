@@ -22,13 +22,15 @@ docs/features/
 
 1. Read the project glossary, if there is one. Look for `CONTEXT.md` or `GLOSSARY.md` at the top of the repo. Read the files that are already in `docs/features/`.
 2. Compare the request with the project. If the request says a thing that the project does not agree with, write what the person will see and record the difference as an assumption.
-3. List the features. A feature is one thing that the person can see or do, and it has a result that the person cares about. If a feature needs more than about twelve acceptance criteria, tell the user that it can be two features. Do not divide a feature that the user named.
+3. List the features. A feature is one thing that the person can see or do, and it has a result that the person cares about. If a feature needs more than about twelve acceptance criteria, tell the user in your reply that it can be two features. Do not divide a feature that the user named, and do not write this note in the spec.
 4. If the user did not give the list of features, show your list to the user before you write the files.
 5. Write one file for each feature. Use the template in the next section.
 6. Write `README.md`, or update it if it is there. Use the README template.
 7. Do the checks at the end of this file.
 
-Write the prose by the `writing` skill, in its technical register. Load that skill before you write.
+Write the prose by the `writing` skill, in its technical register. Load that skill before you write. That register does not permit "I". This skill does, for the criteria and for the writer in `Assumptions` and `Decisions`.
+
+The spec is about the app. Do not mention this skill, its rules or your instructions in the spec.
 
 ## Feature file
 
