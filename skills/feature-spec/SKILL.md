@@ -21,11 +21,12 @@ docs/features/
 ## Process
 
 1. Read the project glossary, if there is one. Look for `CONTEXT.md` or `GLOSSARY.md` at the top of the repo. Read the files that are already in `docs/features/`.
-2. List the features. A feature is one thing that the person can see or do, and it has a result that the person cares about. If a feature needs more than about ten acceptance criteria, divide it into two features.
-3. If the user did not give the list of features, show your list to the user before you write the files.
-4. Write one file for each feature. Use the template in the next section.
-5. Write `README.md`, or update it if it is there. Use the README template.
-6. Do the checks at the end of this file.
+2. Compare the request with the project. If the request says a thing that the project does not agree with, write what the person will see and record the difference as an assumption.
+3. List the features. A feature is one thing that the person can see or do, and it has a result that the person cares about. If a feature needs more than about twelve acceptance criteria, tell the user that it can be two features. Do not divide a feature that the user named.
+4. If the user did not give the list of features, show your list to the user before you write the files.
+5. Write one file for each feature. Use the template in the next section.
+6. Write `README.md`, or update it if it is there. Use the README template.
+7. Do the checks at the end of this file.
 
 Write the prose by the `writing` skill, in its technical register. Load that skill before you write.
 
@@ -75,10 +76,14 @@ Rules for the feature file:
 - Write each criterion in the first person, as the person in the user story.
 - Each criterion tests one result. A criterion can have a second **When** and **Then** pair if the second action undoes or completes the first. See criteria 2 and 5 in the example.
 - Include the criteria for the cases that are not the usual case: nothing to show, a wrong entry, a small screen.
+- Put a condition in a **Given** line. Do not put "if" in a **Then** line or an **And** line.
 - Each **Then** must be a thing that the person can see or check when they use the app. "The page feels fast" fails this test. "I see the page in less than two seconds" passes.
 - Use exact values. Write the number, the order, or the name of each item that the person sees.
-- An assumption is a thing that is not confirmed. A decision is a choice that someone made, with its reason. If the user rejected an alternative, name the alternative in the decision.
-- Record a thing that the feature does not do yet as a decision. See the last decision in the example.
+- If the app does not have a label or a message yet, propose one. List all the labels that you proposed in one assumption.
+- An assumption is a thing that the user did not confirm. A choice that you made to fill a hole in the request is an assumption.
+- A decision is a choice that the user made or agreed to, with its reason. If the user rejected an alternative, name the alternative in the decision.
+- In the criteria, "I" is the person in the user story. In `Assumptions` and `Decisions`, "you" is the user and "I" is the writer of the spec.
+- If the user said that the feature does not do a thing yet, record that as a decision. See the last decision in the example. If you only think that the feature does not do the thing, record it as an assumption.
 - If a feature has no assumptions, remove the `Assumptions` heading. Do the same for `Decisions`.
 - Do not invent a decision. If you do not know the answer to a question, write your best answer as an assumption.
 
@@ -89,6 +94,8 @@ Describe what the person sees and does. Do not describe how the app does it.
 - Do not name code, files, folders, databases, frameworks, libraries, services or data formats.
 - Do not use words for the parts of a program, such as "endpoint", "component", "query", "cache", "state", "sync" or "render".
 - Replace a technical cause with its visible result. "The app reads the vault on each build" becomes "The board shows the change the next time the app updates".
+- If the user made a technical choice, record its visible result as a decision. "Keep the filters in the URL" becomes "A bookmark of the board keeps your choices". The technical detail goes in the implementation spec, not in this spec.
+- Words for things that the person sees in a browser are not technical: "page", "link", "address", "tab", "bookmark", "back button".
 - Use the words of the project glossary for the things in the app. Use one word for one thing in every file.
 - Copy the exact values that the person sees, such as a status or a label, and put them in code format: `applied`, `strong-fit`.
 
@@ -116,6 +123,8 @@ Rules for the README:
 
 - List each feature file one time, in the order in which a new person meets the features.
 - Put a rule in "What applies to every feature" only if it is true for all the features. Then remove the rule from the feature files, unless a feature has its own criteria for it.
+- If a feature is in the app and has no file, list its name with no link and add "No spec yet".
+- For the title, use the name that the user gives the app. If the app has no name, use a few plain words for what it does.
 - The README has no acceptance criteria.
 
 ## Checks
