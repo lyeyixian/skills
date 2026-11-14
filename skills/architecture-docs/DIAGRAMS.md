@@ -54,7 +54,8 @@ Each node has three lines. Mermaid wraps a long line, and a wrapped box is hard 
 - Line 2 starts with the kind: `Person`, `Software system`, `Container`, `Component`, `Volume`, `File` or `External`.
 - If there is no technology, leave it out, as in `[Person]`.
 - Write `[External: technology]` for a system that is outside this system.
-- A node has the same three lines in each diagram that shows it.
+- A node has the same three lines in each diagram that shows it. A store from level 2 keeps its `Container` label in the deployment diagram. `Volume` and `File` are for things that only the deployment diagram shows.
+- The brackets are part of line 2 and count to its limit.
 
 ## Shapes and classes
 
@@ -77,7 +78,7 @@ Each node has three lines. Mermaid wraps a long line, and a wrapped box is hard 
 - A subgraph for the system, for a container or for a group of components has one line: the name.
 - A group of components can add the rule that the group obeys, after a comma: `Vault module, no Next.js code`.
 - A subgraph in a deployment diagram has the name, a comma, then the kind: `Home server, server`.
-- The kinds are `device`, `server`, `runtime`, `region` and `external service`. If a part runs as more than one copy, use the count as the kind: `API app, 2 machines`.
+- The kinds are `device`, `server`, `runtime`, `network`, `region` and `external service`. If a part runs as more than one copy, use the count as the kind: `API app, 2 machines`.
 - Keep the label of a subgraph to 40 characters or fewer.
 - Do not put a subgraph around one `external` node. The node already names the service.
 - The groups in template 3 are optional. Use a group when some components obey a rule that the others do not.

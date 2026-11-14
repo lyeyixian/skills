@@ -114,7 +114,7 @@ If a new decision replaces one part of an old one:
 
 If the request disagrees with an accepted ADR and the user did not say that the decision changed, stop. Tell the user which ADR the request disagrees with, and ask if the decision changed. Do not do the work and do not change the ADR until the user answers.
 
-You can correct a wrong link or a spelling error in an accepted ADR.
+You can correct a wrong link or a spelling error in an accepted ADR. If the user gives a reason later for a decision that did not change, add the reason to `Context`.
 
 ## README
 
