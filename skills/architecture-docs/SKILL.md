@@ -44,7 +44,8 @@ The docs are about the app. Do not mention this skill, its rules or your instruc
 
 - Start each page with one or two sentences that say what the page shows.
 - Describe the app as it is, or as the design says it will be for the version that you document. Name that version on the README page.
-- Mark each thing that is not agreed. Write "Proposed" in a status column, or say in a sentence that the part is a proposal.
+- Mark each thing that is not agreed. Write "Proposed" in a status column, or say in a sentence that the part is a proposal. You can add a `Status` column to a table of a template.
+- If a fact fits none of the sections, add a section for it to the page that is nearest in subject.
 - Use one name for one thing on all pages and in all diagrams. Use the words of the project glossary.
 - Do not give the reason for a choice. Link to the ADR where a reader will ask why.
 - Do not copy a list that the code can generate, such as the endpoints of an API. Link to the generated document.
@@ -100,7 +101,7 @@ The things that the repo must not hold, such as keys or private data. Remove thi
 
 ## components.md
 
-Write this page if a container has parts with rules about which part can call which. If each container is one simple part, do not write the page.
+Write this page if a container has parts with rules about which part can call which. If each container is one simple part, do not write the page. Then put the `Sequence` sections of the main flows at the end of `README.md`.
 
 - `## Level 3: components of <container>`: the question, the diagram from template 3, and a table with the columns `Component` and `Job`.
 - Write one such section for each container that has components.
@@ -110,7 +111,7 @@ Write this page if a container has parts with rules about which part can call wh
 ## deployment.md
 
 - `## Deployment: <version or environment>`: the question, the diagram from template 4, and a table with the columns `Node`, `Runs` and `Holds`. A node is a machine or a service that runs things.
-- `## Sequence: a release`: what happens between a merge and the new version on the server. Use template 5.
+- `## Sequence: a release`: what happens between the action that starts a release, such as a merge, and the new version on the server. Use template 5.
 - `## Settings`: a table with the columns `Setting`, `Where it is set` and `Purpose`. List each environment variable and each mounted file that the code or the design names. Do not write the value of a secret. Remove the section if no setting has a name yet.
 - `## One-time setup`: the numbered steps to prepare a new server. Remove the section if the user and the repo give no steps.
 - If the app has more than one environment, write one `Deployment` section for each environment.
