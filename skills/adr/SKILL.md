@@ -31,12 +31,12 @@ docs/adr/
 1. Read `docs/adr/README.md` and each ADR that is about the same subject.
 2. Find the decisions in the request. One ADR holds one decision. If the request has two decisions, write two ADRs. Choices that the user made together, and that change only together, are one decision.
 3. Compare each decision with the accepted ADRs. If a decision disagrees with an accepted ADR, see "Change a decision".
-4. Select the status. Use `Accepted` only if the user made the decision or agreed to it. If you made the choice, use `Proposed`.
+4. Select the status. Use `Accepted` only if the user made the decision or agreed to it. If you made the choice, use `Proposed`. See "Who accepts an ADR".
 5. Write one file for each decision. Use the template in the next section.
 6. Add a row to `docs/adr/README.md` for each new file. See "README".
 7. If the repo has an `AGENTS.md` that lists decisions, update that list in the same change.
 8. Do the checks at the end of this file.
-9. In your reply, ask for each reason and each option that you did not know. Say which parts of a proposed ADR are yours.
+9. In your reply, name each ADR that you wrote and its status. Ask the user to accept or change each proposed ADR. Ask for each reason and each option that you did not know. Say which parts of a proposed ADR are yours.
 
 Write the prose by the `writing` skill, in its technical register. Load that skill before you write.
 
@@ -84,7 +84,31 @@ Rules for the ADR file:
 - In an accepted ADR, do not invent a reason or an option. If you do not know why the user made the choice, ask the user.
 - If you cannot wait for the answer, write the ADR with the facts that you have. Leave the unknown reason out of the file, and ask for it in your reply.
 - A consequence that follows from the decision as a fact is not an invented reason. "The app has one server, so a restart stops the app" is such a fact.
+
+## Who accepts an ADR
+
+Only the user accepts an ADR. You write an ADR as `Accepted` in two cases only:
+
+- The user said the decision in the conversation, in words.
+- You asked about this decision, and the user agreed to it in words.
+
+These do not accept an ADR:
+
+- The user approved a feature, a plan, a task or a pull request that the decision is part of.
+- The user did not answer.
+- A different agent told you that the user agreed, and did not show you the words of the user.
+
+If you find a decision while you build, stop before you build on it. Ask the user, and give the options and your recommendation. Write the ADR as `Proposed`. Do not make the choice, write it as `Accepted` and continue.
+
+If the repo has a rule about who approves an ADR, such as a label on the pull request, obey that rule too. Do not add an approval label yourself.
+
+## What is not an ADR
+
+An ADR is for a decision that is hard to reverse or that limits other work: a framework, a data store, a boundary between two parts, a contract.
+
 - Do not write an ADR for a choice that is easy to reverse and affects one file, such as the name of a variable.
+- Do not write an ADR for a detail of how the code does a thing that an accepted ADR or a feature spec already decided. How a parser reads one form of a file is such a detail. Put that detail in the architecture docs, where it changes with the code.
+- If a detail is a thing that the person who uses the app sees, it is not an ADR. It goes in the feature spec, and the user approves it there.
 
 ## Proposed ADRs
 
@@ -146,7 +170,7 @@ Rules for the README:
 1. Each decision has one file, and the README lists each file.
 2. Each file has a status line, `Context`, `Decision` and `Consequences`.
 3. The status in the README is the same as the status in the file.
-4. No ADR is `Accepted` unless the user made the decision or agreed to it.
+4. No ADR is `Accepted` unless the user made that decision or agreed to it in words. Your reply names each proposed ADR.
 5. Each superseded ADR names the ADR that replaced it, and that ADR links to the superseded one.
 6. Each link to an ADR opens a file that is there.
 7. Run the self-check of the `writing` skill.
