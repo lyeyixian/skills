@@ -23,7 +23,7 @@ The `adr` skill records each decision. Load it before you write an ADR.
 
 ## One diagram only
 
-If the user asks for a diagram and not for the docs, do "Draw a diagram" in [DIAGRAMS.md](DIAGRAMS.md). Put the diagram in the file that the user names. Do not write the other pages.
+If the user asks for a diagram and not for the docs, do "Draw a diagram" in [DIAGRAMS.md](DIAGRAMS.md). Put the diagram in the file that the user names. Do not write the other pages. If the new diagram makes a sentence on that page wrong, correct the sentence.
 
 ## Process
 
