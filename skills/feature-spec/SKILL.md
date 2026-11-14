@@ -1,6 +1,6 @@
 ---
 name: feature-spec
-description: Write a feature spec in plain language, one file per user-facing feature in docs/features/. Each file has a short description, a user story, numbered Given/When/Then acceptance criteria, and the assumptions and decisions behind the feature. Use when the user asks for a feature spec, a product spec, acceptance criteria, or a description of what an app does for the person who uses it.
+description: Write a feature spec in plain language, one file per user-facing feature in docs/features/. Each file has a short description, a user story, numbered Given/When/Then acceptance criteria, and the assumptions and decisions behind the feature. After the app is built, docs/features/ is the baseline, and a new or changed behaviour is a change in docs/changes/ that the user approves before code is written. Use when the user asks for a feature spec, a product spec, acceptance criteria, or a description of what an app does for the person who uses it, or when work adds, changes or removes a behaviour of an app that has a feature spec.
 ---
 
 # Feature spec
@@ -19,6 +19,8 @@ docs/features/
 
 [EXAMPLE.md](EXAMPLE.md) is a feature file that the user approved. Read it before you write the first feature file, and match its shape.
 
+Only the user approves the spec. You write a spec or a change to it as a proposal, and you say so in your reply. If code is already built from the spec, do not edit `docs/features/` to propose a behaviour. See "Change a spec that the app is built from".
+
 ## Process
 
 1. Read the project glossary, if there is one. Look for `CONTEXT.md` or `GLOSSARY.md` at the top of the repo. Read the files that are already in `docs/features/`.
@@ -29,6 +31,7 @@ docs/features/
 6. If some criteria apply to every feature, write the file for the whole app. See "Criteria for the whole app".
 7. Write `README.md`, or update it if it is there. Use the README template.
 8. Do the checks at the end of this file.
+9. In your reply, list each criterion that holds a choice of yours, and each assumption. Ask the user to confirm or change each one.
 
 Write the prose by the `writing` skill, in its technical register. Load that skill before you write. That register does not permit "I". This skill does, for the criteria and for the writer in `Assumptions` and `Decisions`.
 
@@ -84,12 +87,14 @@ Rules for the feature file:
 - Each **Then** must be a thing that the person can see or check when they use the app. "The page feels fast" fails this test. "I see the page in less than two seconds" passes.
 - Use exact values. Write the number, the order, or the name of each item that the person sees.
 - If the app does not have a label or a message yet, propose one. List all the labels that you proposed in one assumption.
-- An assumption is a thing that the user did not confirm. A choice that you made to fill a hole in the request is an assumption.
-- A decision is a choice that the user made or agreed to, with its reason. If the user rejected an alternative, name the alternative in the decision.
+- A thing that the person sees or does in the app is a criterion. This includes an order, a default, a label, what a missing value shows, and what stays after Back or a bookmark. Do not put such a thing only in `Assumptions` or `Decisions`.
+- An assumption is a fact about the person or their data that the user did not confirm, such as "The list has about 40 items today". It is not a behaviour of the app.
+- If the request has a hole and you fill it with a behaviour, write the behaviour as a criterion and list it in your reply. The user approves it there.
+- A decision is a choice that the user made or agreed to, with its reason. If the user rejected an alternative, name the alternative in the decision. A decision can give the reason for a criterion. It can also say what the feature does not do.
 - In the criteria, "I" is the person in the user story. In `Assumptions` and `Decisions`, "you" is the user and "I" is the writer of the spec.
 - If the user said that the feature does not do a thing yet, record that as a decision. See the last decision in the example. If you only think that the feature does not do the thing, record it as an assumption.
 - If a feature has no assumptions, remove the `Assumptions` heading. Do the same for `Decisions`.
-- Do not invent a decision. If you do not know the answer to a question, write your best answer as an assumption.
+- Do not invent a decision. A choice that you made is not a decision until the user agrees to it in words. If you do not know the answer to a question, ask the user. If you cannot wait, write your best answer as an assumption or as a criterion, and list it in your reply.
 
 ## No technical terms
 
@@ -115,6 +120,71 @@ Some criteria are true for every feature. Examples are a menu on each page, a si
 - Put a criterion in this file only if it is true for all the features.
 - Remove the criterion from the other feature files. A feature keeps its own criterion when the feature does a specific thing, such as "I can swipe sideways to go to the next column" for a board on a phone.
 - If no criterion applies to every feature, do not write this file.
+
+## Change a spec that the app is built from
+
+After code is built from the spec, `docs/features/` is the baseline. The baseline says what the app does now. A behaviour that is not built is a change, and a change has its own folder until its code is merged.
+
+```text
+docs/changes/
+├── change-status-from-board/     # one open change
+│   ├── README.md                 # the reason, the status and the files
+│   └── application-board.md      # the changes to one feature file
+└── archive/
+    └── 2026-11-20-open-the-resume/
+```
+
+If the repo has a `docs/changes/README.md`, obey it. If it does not, use these rules.
+
+1. Write the change folder. Name it after the change, in lower case with hyphens.
+2. In its `README.md`, write the title, the line `**Status:** Proposed (2026-11-14)`, two to four sentences about what the person can do after the change, and a list of the files in the folder.
+3. For a feature that is in the baseline, write a file with the name of the feature file. Use the change template below. Write only the parts that change.
+4. For a new feature, write the full feature file in the change folder.
+5. Ask the user to approve the change. Do not write code and do not edit `docs/features/` before the user approves in words.
+6. When the user approves, set the status to `Approved` with the date.
+7. If the build finds a behaviour that no approved criterion covers, stop and ask the user. Add the answer to the change as a criterion.
+8. When the code is ready to merge, fold the change. Apply it to the files in `docs/features/`, and move the folder to `docs/changes/archive/` with the date in front of its name. Do this in the same pull request as the code, as its last commit.
+9. If the repo gates `docs/features/`, such as with a label on the pull request, the user gives that approval. Do not give it yourself.
+
+<change-template>
+
+# Feature name
+
+Baseline: [feature-name.md](../../features/feature-name.md)
+
+## Added criteria
+
+### 10. The result, in a few words
+
+- **Given** ...
+- **When** ...
+- **Then** ...
+
+## Changed criteria
+
+### 2. The title of the criterion after the change
+
+The full text of the criterion after the change.
+
+## Removed criteria
+
+### 5. The title of the criterion
+
+One sentence that says why the app stops doing this.
+
+## Other changes
+
+- A change to the description, the user story, an assumption or a decision.
+
+</change-template>
+
+Rules for a change:
+
+- An added criterion takes the next free number of the feature file.
+- A criterion keeps its number for as long as it is in the spec. Do not give the number of a removed criterion to a new one. Tests can hold the number.
+- Remove a heading of the template that has nothing below it.
+- A fix that makes the code do what the baseline already says is not a change. It needs no folder.
+- The rules for a feature file apply to each criterion in a change.
 
 ## README
 
@@ -146,4 +216,7 @@ Rules for the README:
 4. Search each file for technical terms and remove them.
 5. A criterion that applies to every feature is in the file for the whole app, and in no other file.
 6. Compare the names of things with the project glossary and with the other feature files.
-7. Run the self-check of the `writing` skill.
+7. No behaviour of the app is only in `Assumptions` or `Decisions`. Each one is a criterion.
+8. No decision is in the spec unless the user made it or agreed to it in words.
+9. If code is built from the spec, each new behaviour is in `docs/changes/`, and `docs/features/` changes only in a fold.
+10. Run the self-check of the `writing` skill.
