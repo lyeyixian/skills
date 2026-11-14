@@ -10,6 +10,12 @@ The dotfiles setup clones this repo to `~/.skills` and links every skill into `~
 
 `writing` replaced the older `unslop` skill. It keeps the unslop patterns and adds an ASD-STE100 register for procedures, reference and code comments. In a test of 96 replies, with the unslop rules loaded a blind judge preferred the replies 21 of 24 times for both Opus 5.5 and Fable 5.1. The STE register has no test yet.
 
+## Commit messages
+
+`conventional-commits` gives the format of a commit message or a pull request title: the type, the scope, the breaking change mark and the footers. `writing` still gives the wording. The format is in its own skill because the hook prints `writing` into every session, and most sessions never commit.
+
+A fresh agent followed the skill on seven sample repos: a feature with tests and docs, a fix across two apps, a dependency update, a breaking rename, a diff that needed two commits, a repo with a different format, and a squash-merge title. All seven messages had the type and scope I expected. The agent listed the points where it had to guess, and the skill now answers them. That second version has no test run yet.
+
 ## Forked skills
 
 Seven skills started as copies of [mattpocock/skills](https://github.com/mattpocock/skills), MIT licensed (`skills/LICENSE-mattpocock`). `UPSTREAM` pins the commit each one came from. To see how far a skill has drifted from its upstream:
