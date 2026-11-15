@@ -129,7 +129,7 @@ After code is built from the spec, the spec says what the app does. Keep it true
 - In the description of the pull request and in your reply, name each criterion that you added, changed or removed.
 - If the build finds a behaviour that no criterion covers, stop and ask the user. Write the answer as a criterion.
 - Do not add a decision or an assumption for a choice that you made in the build.
-- If the repo gates the spec, such as with a label on the pull request, the user gives that approval. Do not give it yourself.
+- The user approves the change when the user merges the pull request. Do not merge it yourself.
 
 ## README
 
