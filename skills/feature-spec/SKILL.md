@@ -1,6 +1,6 @@
 ---
 name: feature-spec
-description: Write a feature spec in plain language, one file per user-facing feature in docs/features/. Each file has a short description, a user story, numbered Given/When/Then acceptance criteria, and the assumptions and decisions behind the feature. After the app is built, docs/features/ is the baseline, and a new or changed behaviour is a change in docs/changes/ that the user approves before code is written. Use when the user asks for a feature spec, a product spec, acceptance criteria, or a description of what an app does for the person who uses it, or when work adds, changes or removes a behaviour of an app that has a feature spec.
+description: Write a feature spec in plain language, one file per user-facing feature in docs/features/. Each file has a short description, a user story, numbered Given/When/Then acceptance criteria, and the assumptions and decisions behind the feature. Only the user approves the spec and each change to it. Use when the user asks for a feature spec, a product spec, acceptance criteria, or a description of what an app does for the person who uses it, or when work adds, changes or removes a behaviour of an app that has a feature spec.
 ---
 
 # Feature spec
@@ -19,7 +19,7 @@ docs/features/
 
 [EXAMPLE.md](EXAMPLE.md) is a feature file that the user approved. Read it before you write the first feature file, and match its shape.
 
-Only the user approves the spec. You write a spec or a change to it as a proposal, and you say so in your reply. If code is already built from the spec, do not edit `docs/features/` to propose a behaviour. See "Change a spec that the app is built from".
+Only the user approves the spec. You write a spec or a change to it as a proposal, and you say so in your reply. See "Change a spec that the app is built from".
 
 ## Process
 
@@ -123,68 +123,13 @@ Some criteria are true for every feature. Examples are a menu on each page, a si
 
 ## Change a spec that the app is built from
 
-After code is built from the spec, `docs/features/` is the baseline. The baseline says what the app does now. A behaviour that is not built is a change, and a change has its own folder until its code is merged.
+After code is built from the spec, the spec says what the app does. Keep it true.
 
-```text
-docs/changes/
-├── change-status-from-board/     # one open change
-│   ├── README.md                 # the reason, the status and the files
-│   └── application-board.md      # the changes to one feature file
-└── archive/
-    └── 2026-11-20-open-the-resume/
-```
-
-If the repo has a `docs/changes/README.md`, obey it. If it does not, use these rules.
-
-1. Write the change folder. Name it after the change, in lower case with hyphens.
-2. In its `README.md`, write the title, the line `**Status:** Proposed (2026-11-14)`, two to four sentences about what the person can do after the change, and a list of the files in the folder.
-3. For a feature that is in the baseline, write a file with the name of the feature file. Use the change template below. Write only the parts that change.
-4. For a new feature, write the full feature file in the change folder.
-5. Ask the user to approve the change. Do not write code and do not edit `docs/features/` before the user approves in words.
-6. When the user approves, set the status to `Approved` with the date.
-7. If the build finds a behaviour that no approved criterion covers, stop and ask the user. Add the answer to the change as a criterion.
-8. When the code is ready to merge, fold the change. Apply it to the files in `docs/features/`, and move the folder to `docs/changes/archive/` with the date in front of its name. Do this in the same pull request as the code, as its last commit.
-9. If the repo gates `docs/features/`, such as with a label on the pull request, the user gives that approval. Do not give it yourself.
-
-<change-template>
-
-# Feature name
-
-Baseline: [feature-name.md](../../features/feature-name.md)
-
-## Added criteria
-
-### 10. The result, in a few words
-
-- **Given** ...
-- **When** ...
-- **Then** ...
-
-## Changed criteria
-
-### 2. The title of the criterion after the change
-
-The full text of the criterion after the change.
-
-## Removed criteria
-
-### 5. The title of the criterion
-
-One sentence that says why the app stops doing this.
-
-## Other changes
-
-- A change to the description, the user story, an assumption or a decision.
-
-</change-template>
-
-Rules for a change:
-
-- An added criterion takes the next free number of the feature file.
-- A criterion keeps its number for as long as it is in the spec. Do not give the number of a removed criterion to a new one. Tests can hold the number.
-- Remove a heading of the template that has nothing below it.
-- A fix that makes the code do what the baseline already says is not a change. It needs no folder.
-- The rules for a feature file apply to each criterion in a change.
+- Change the feature file in the same pull request as the code that changes the behaviour.
+- In the description of the pull request and in your reply, name each criterion that you added, changed or removed.
+- If the build finds a behaviour that no criterion covers, stop and ask the user. Write the answer as a criterion.
+- Do not add a decision or an assumption for a choice that you made in the build.
+- If the repo gates the spec, such as with a label on the pull request, the user gives that approval. Do not give it yourself.
 
 ## README
 
@@ -218,5 +163,5 @@ Rules for the README:
 6. Compare the names of things with the project glossary and with the other feature files.
 7. No behaviour of the app is only in `Assumptions` or `Decisions`. Each one is a criterion.
 8. No decision is in the spec unless the user made it or agreed to it in words.
-9. If code is built from the spec, each new behaviour is in `docs/changes/`, and `docs/features/` changes only in a fold.
+9. If code is built from the spec, your reply names each criterion that you added, changed or removed.
 10. Run the self-check of the `writing` skill.
