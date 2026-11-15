@@ -100,7 +100,7 @@ These do not accept an ADR:
 
 If you find a decision while you build, stop before you build on it. Ask the user, and give the options and your recommendation. Write the ADR as `Proposed`. Do not make the choice, write it as `Accepted` and continue.
 
-If the repo has a rule about who approves an ADR, such as a label on the pull request, obey that rule too. Do not add an approval label yourself.
+If the repo has a rule about who approves an ADR, obey that rule too.
 
 ## What is not an ADR
 
